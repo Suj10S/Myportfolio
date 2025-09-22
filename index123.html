@@ -3,571 +3,1444 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sujan Subedi - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Sunrise Education Foundation - Study Abroad & Language Training in Damak, Nepal</title>
+    <meta name="description" content="Sunrise Education Foundation offers language training, IT courses, and study abroad guidance in USA, Japan, Korea, UK, and more. Based in Damak, Nepal.">
+    <meta name="keywords" content="study abroad, language training, IT courses, educational consultancy, Nepal, Damak, study in USA, study in Japan, study in Korea, study in UK">
+    <meta name="author" content="Sunrise Education Foundation">
+    <link rel="canonical" href="https://www.sunriseeducationdamak.com">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #000000 0%, #4c1d95 50%, #7c3aed 100%);
+        /* CSS Variables for Theming */
+        :root {
+            --primary: #ff5722;
+            --secondary: #fdd835;
+            --dark: #333;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
             position: relative;
         }
         
-        .gradient-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        
-        .gradient-bg::after {
-            content: '{ } < /> function() { return code; } class Developer { } const skills = []; if (passionate) { create(); } while (learning) { grow(); } </>';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            color: rgba(124, 58, 237, 0.1);
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            line-height: 2;
-            padding: 20px;
-            pointer-events: none;
-            overflow: hidden;
-            animation: codeFlow 20s linear infinite;
-        }
-        
-        @keyframes codeFlow {
-            0% { transform: translateY(100%); }
-            100% { transform: translateY(-100%); }
-        }
-
-        
-        .floating-btn {
-            position: fixed;
-            z-index: 1000;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .floating-btn:hover {
-            transform: scale(1.1);
-        }
-        
-        .whatsapp-btn {
-            bottom: 20px;
-            right: 20px;
-            background: #25D366;
-        }
-        
-        .phone-btn {
-            bottom: 90px;
-            right: 20px;
-            background: #007bff;
-        }
-        
-        .skill-item {
-            transition: all 0.3s ease;
-        }
-        
-        .skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
-        }
-        
-        .project-card {
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        
-        .nav-link:hover {
-            color: #a855f7;
-            transform: translateY(-2px);
-        }
-
-        /* Image preview styling */
-        .image-preview {
-            width: 100%;
-            height: 150px;
-            border: 2px dashed #7c3aed;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin-bottom: 10px;
-            background-color: #1f2937;
-        }
-        
-        .image-preview img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        
-        .upload-btn {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #7c3aed;
-            color: white;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-align: center;
-            margin-top: 8px;
-        }
-        
-        .upload-btn:hover {
-            background-color: #6d28d9;
-        }
-        
-        #image-upload, #edit-image-upload {
-            display: none;
-        }
-        
-        /* Edit modal styling */
-        .edit-modal {
+        body::before {
+            content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="10" y="50" font-family="Arial" font-size="10" fill="rgba(255,87,34,0.03)" transform="rotate(45 50 50)">Sunrise Education</text></svg>');
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            background: var(--gradient);
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+        }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-left: 10px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .nav-menu {
+            display: flex;
+        }
+        
+        .nav-menu li {
+            margin: 0 15px;
+        }
+        
+        .nav-menu a {
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--dark);
+            transition: var(--transition);
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient);
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            z-index: 1;
+            position: relative;
+        }
+        
+        .hero-content h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .slide.active {
+            opacity: 1;
+        }
+        
+        .slide-1 {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+        }
+        
+        .slide-2 {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');
+        }
+        
+        .slide-3 {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1523059623039-a9ed027e7fad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80');
+        }
+        
+        .slide-4 {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2053&q=80');
+        }
+        
+        .tts-btn {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid var(--white);
+        }
+        
+        .tts-btn:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+        
+        /* Study Abroad Section */
+        .study-abroad {
+            background: var(--light);
+        }
+        
+        .destinations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .destination {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .destination.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .destination:hover {
+            transform: translateY(-10px);
+        }
+        
+        .destination-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .destination-content {
+            padding: 20px;
+        }
+        
+        .destination-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1000;
         }
         
-        .edit-modal-content {
-            background-color: #1f2937;
+        .flag {
+            font-size: 1.8rem;
+            margin-right: 10px;
+        }
+        
+        /* Student Success Section */
+        .student-slider {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            background: var(--gradient);
+            padding: 40px 0;
+        }
+        
+        .student-track {
+            display: flex;
+            animation: slide 30s linear infinite;
+            width: calc(250px * 12);
+        }
+        
+        .student {
+            width: 250px;
+            margin: 0 15px;
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .student-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .student-info {
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .student-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .student-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-250px * 6));
+            }
+        }
+        
+        /* About Us Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .feature {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .stat {
+            text-align: center;
             padding: 20px;
-            border-radius: 8px;
-            width: 90%;
-            max-width: 500px;
-            border: 1px solid #7c3aed;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .progress-bars {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .progress-bar {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .progress-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .progress {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-filled {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 5px;
+            width: 0;
+            transition: width 1s ease;
+        }
+        
+        /* Services Section */
+        .services {
+            background: var(--light);
+        }
+        
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-card i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            background: var(--white);
+        }
+        
+        .review-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .review-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .review-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .review-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .review-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .stars {
+            color: var(--secondary);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background: var(--light);
+        }
+        
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .accordion-item {
+            background: var(--white);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        .accordion-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .accordion-header i {
+            transition: var(--transition);
+        }
+        
+        .accordion-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+            padding: 0 20px 20px;
+        }
+        
+        .accordion-item.active .accordion-header i {
+            transform: rotate(180deg);
+        }
+        
+        /* Board Members Section */
+        .board-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .member {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .member-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid var(--light);
+        }
+        
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .member-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .member-contact {
+            margin-top: 15px;
+        }
+        
+        .member-contact a {
+            display: inline-block;
+            margin: 0 5px;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+        
+        .member-contact a:hover {
+            color: var(--primary);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--gradient);
+            color: var(--white);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+        
+        .contact-form {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            color: var(--dark);
+        }
+        
+        .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: var(--gradient);
+            color: var(--white);
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            transition: var(--transition);
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 991px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                gap: 0;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .destination-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .feature h3, .service-card h3 {
+                font-size: 1.3rem;
+            }
         }
     </style>
 </head>
-<body class="bg-black text-white">
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-purple-500/30">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 bg-gradient-to-r from-purple-600 to-purple-800 rounded-lg flex items-center justify-center font-bold text-xl">
-                        SS
-                    </div>
-                    <span class="text-xl font-bold">Sujan Subedi</span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link">Home</a>
-                    <a href="#about" class="nav-link">About</a>
-                    <a href="#skills" class="nav-link">Skills</a>
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <a href="#reviews" class="nav-link">Reviews</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-white">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiByeD0iMTAiIGZpbGw9IiNGRjU3MjIiLz4KPHBhdGggZD0iTTE1IDM1TDM1IDE1TTM1IDM1TDE1IDE1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgo8Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSIxMCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+Cjwvc3ZnPg==" alt="Sunrise Education Foundation Logo">
+                <h1>Sunrise Education Foundation</h1>
             </div>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#study-abroad">Study Abroad</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-black/95 border-t border-purple-500/30">
-            <div class="px-6 py-4 space-y-4">
-                <a href="#home" class="block nav-link">Home</a>
-                <a href="#about" class="block nav-link">About</a>
-                <a href="#skills" class="block nav-link">Skills</a>
-                <a href="#projects" class="block nav-link">Projects</a>
-                <a href="#reviews" class="block nav-link">Reviews</a>
-                <a href="#contact" class="block nav-link">Contact</a>
-            </div>
-        </div>
-    </nav>
+    </header>
 
-    <!-- Home Section -->
-    <section id="home" class="min-h-screen gradient-bg flex items-center justify-center pt-20">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center justify-between">
-                <div class="lg:w-1/2 text-center lg:text-left mb-10 lg:mb-0">
-                    <h1 class="text-5xl lg:text-7xl font-bold mb-6">
-                        Hi, I'm <span class="text-purple-400">Sujan</span>
-                    </h1>
-                    <p class="text-xl lg:text-2xl mb-8 text-gray-300">
-                        Passionate, Selfless & Dynamic Person
-                    </p>
-                    <p class="text-lg mb-8 text-gray-400">
-                        Transforming ideas into digital reality with creativity and innovation
-                    </p>
-                    <button onclick="scrollToSection('contact')" class="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105">
-                        Get In Touch
-                    </button>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-slider">
+            <div class="slide slide-1 active"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+            <div class="slide slide-4"></div>
+        </div>
+        
+        <div class="container hero-content">
+            <h2>Your Gateway to Global Education</h2>
+            <p>Sunrise Education Foundation provides expert guidance for studying abroad, language training, and IT courses to help you achieve your academic and career goals.</p>
+            <a href="#contact" class="btn">Join Us Today</a>
+            <button class="btn tts-btn" id="tts-btn">
+                <i class="fas fa-volume-up"></i> Listen to this
+            </button>
+        </div>
+    </section>
+
+    <!-- Study Abroad Section -->
+    <section id="study-abroad" class="section study-abroad">
+        <div class="container">
+            <div class="section-title">
+                <h2>Study Abroad Destinations</h2>
+                <p>We help students achieve their dreams of studying in these countries</p>
+            </div>
+            
+            <div class="destinations">
+                <div class="destination">
+                    <div class="destination-img" style="background-image: url('https://images.unsplash.com/photo-1485738422979-f5c462d49f74?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1799&q=80');"></div>
+                    <div class="destination-content">
+                        <h3><span class="flag">🇺🇸</span> United States</h3>
+                        <p>World-class universities with diverse programs and research opportunities.</p>
+                    </div>
                 </div>
-                <div class="lg:w-1/2 flex justify-center">
-                    <div class="relative">
-                        <img src="sujan.jpg" alt="Sujan Subedi" class="w-64 h-64 rounded-lg object-cover border-4 border-purple-500 shadow-2xl" onerror="this.src=''; this.alt='Photo not available'; this.className='w-64 h-64 rounded-lg bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center text-white text-6xl font-bold border-4 border-purple-500 shadow-2xl'; this.innerHTML='SS';">
+                
+                <div class="destination">
+                    <div class="destination-img" style="background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80');"></div>
+                    <div class="destination-content">
+                        <h3><span class="flag">🇬🇧</span> United Kingdom</h3>
+                        <p>Prestigious institutions with rich academic heritage and global recognition.</p>
+                    </div>
+                </div>
+                
+                <div class="destination">
+                    <div class="destination-img" style="background-image: url('https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80');"></div>
+                    <div class="destination-content">
+                        <h3><span class="flag">🇯🇵</span> Japan</h3>
+                        <p>Cutting-edge technology programs with unique cultural experiences.</p>
+                    </div>
+                </div>
+                
+                <div class="destination">
+                    <div class="destination-img" style="background-image: url('https://images.unsplash.com/photo-1534274867514-d5b47ef90ed1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2065&q=80');"></div>
+                    <div class="destination-content">
+                        <h3><span class="flag">🇰🇷</span> South Korea</h3>
+                        <p>Innovative education system with scholarships for international students.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-gray-900 relative">
-        <div class="absolute inset-0 opacity-5 pointer-events-none">
-            <div class="absolute top-10 left-10 text-purple-400 font-mono text-sm">const developer = { name: 'Sujan', skills: ['frontend', 'backend'] };</div>
-            <div class="absolute top-32 right-20 text-purple-400 font-mono text-sm">function createAmazingWebsites() { return innovation + passion; }</div>
-            <div class="absolute bottom-20 left-1/4 text-purple-400 font-mono text-sm">class WebDeveloper extends Passionate { constructor() { super(); } }</div>
-        </div>
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16">About <span class="text-purple-400">Me</span></h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="text-center mb-12">
-                    <h3 class="text-2xl font-semibold mb-6 text-purple-300">Passionate, Selfless & Dynamic Developer</h3>
-                    <p class="text-lg text-gray-300 leading-relaxed mb-8">
-                        I am Sujan Subedi, a passionate web developer with expertise in both frontend and backend development. 
-                        My journey in technology is driven by a selfless commitment to creating solutions that make a difference 
-                        and a dynamic approach to learning and adapting to new technologies.
-                    </p>
+    <!-- Student Success Section -->
+    <section class="student-slider">
+        <div class="student-track">
+            <!-- Student 1 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');"></div>
+                <div class="student-info">
+                    <h3>Rajesh Kumar</h3>
+                    <p>Computer Science at Stanford University, USA</p>
                 </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-black/50 p-6 rounded-lg border border-purple-500/30">
-                        <h4 class="text-xl font-semibold mb-4 text-purple-300">
-                            <i class="fas fa-code mr-2"></i>Development Expertise
-                        </h4>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>• Frontend Developer (React, JavaScript)</li>
-                            <li>• Backend Developer (Node.js, Python)</li>
-                            <li>• Full-Stack Web Development</li>
-                            <li>• Database Design & Management</li>
-                        </ul>
+            </div>
+            
+            <!-- Student 2 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=699&q=80');"></div>
+                <div class="student-info">
+                    <h3>Priya Sharma</h3>
+                    <p>Business Administration in London, UK</p>
+                </div>
+            </div>
+            
+            <!-- Student 3 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1567532939604-b6b5b0db1604?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');"></div>
+                <div class="student-info">
+                    <h3>Sita Gurung</h3>
+                    <p>Engineering in Tokyo, Japan</p>
+                </div>
+            </div>
+            
+            <!-- Student 4 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');"></div>
+                <div class="student-info">
+                    <h3>Anil Thapa</h3>
+                    <p>Medical Studies in Seoul, South Korea</p>
+                </div>
+            </div>
+            
+            <!-- Student 5 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80');"></div>
+                <div class="student-info">
+                    <h3>Mina Rai</h3>
+                    <p>Arts and Design in Melbourne, Australia</p>
+                </div>
+            </div>
+            
+            <!-- Student 6 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');"></div>
+                <div class="student-info">
+                    <h3>Bikash Chhetri</h3>
+                    <p>Hospitality Management in Toronto, Canada</p>
+                </div>
+            </div>
+            
+            <!-- Duplicate for continuous sliding -->
+            <!-- Student 1 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');"></div>
+                <div class="student-info">
+                    <h3>Rajesh Kumar</h3>
+                    <p>Computer Science at Stanford University, USA</p>
+                </div>
+            </div>
+            
+            <!-- Student 2 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=699&q=80');"></div>
+                <div class="student-info">
+                    <h3>Priya Sharma</h3>
+                    <p>Business Administration in London, UK</p>
+                </div>
+            </div>
+            
+            <!-- Student 3 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1567532939604-b6b5b0db1604?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');"></div>
+                <div class="student-info">
+                    <h3>Sita Gurung</h3>
+                    <p>Engineering in Tokyo, Japan</p>
+                </div>
+            </div>
+            
+            <!-- Student 4 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');"></div>
+                <div class="student-info">
+                    <h3>Anil Thapa</h3>
+                    <p>Medical Studies in Seoul, South Korea</p>
+                </div>
+            </div>
+            
+            <!-- Student 5 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80');"></div>
+                <div class="student-info">
+                    <h3>Mina Rai</h3>
+                    <p>Arts and Design in Melbourne, Australia</p>
+                </div>
+            </div>
+            
+            <!-- Student 6 -->
+            <div class="student">
+                <div class="student-img" style="background-image: url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');"></div>
+                <div class="student-info">
+                    <h3>Bikash Chhetri</h3>
+                    <p>Hospitality Management in Toronto, Canada</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+                <p>Your trusted partner in global education since 2010</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Expert Guidance</h3>
+                    <p>Our experienced counselors provide personalized guidance to help you choose the right course and university based on your academic background and career aspirations.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-passport"></i>
+                    <h3>Visa Assistance</h3>
+                    <p>We offer comprehensive visa guidance including documentation, interview preparation, and follow-up to ensure a smooth visa application process.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-home"></i>
+                    <h3>Post-Arrival Support</h3>
+                    <p>Our support doesn't end with your departure. We assist with accommodation, airport pickup, and settling in your new country.</p>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" data-count="1500">0</div>
+                    <div class="stat-title">Students Guided</div>
+                </div>
+                
+                <div class="stat">
+                    <div class="stat-number" data-count="80">0</div>
+                    <div class="stat-title">Partner Universities</div>
+                </div>
+                
+                <div class="stat">
+                    <div class="stat-number" data-count="12">0</div>
+                    <div class="stat-title">Years of Experience</div>
+                </div>
+                
+                <div class="stat">
+                    <div class="stat-number" data-count="95">0</div>
+                    <div class="stat-title">Success Rate</div>
+                </div>
+            </div>
+            
+            <div class="progress-bars">
+                <div class="progress-bar">
+                    <div class="progress-title">
+                        <span>Visa Success Rate</span>
+                        <span>95%</span>
                     </div>
-                    <div class="bg-black/50 p-6 rounded-lg border border-purple-500/30">
-                        <h4 class="text-xl font-semibold mb-4 text-purple-300">
-                            <i class="fas fa-palette mr-2"></i>Design & More
-                        </h4>
-                        <ul class="space-y-2 text-gray-300">
-                            <li>• Web Designer (UI/UX)</li>
-                            <li>• Graphic Designer</li>
-                            <li>• Computer Hardware & Networking</li>
-                            <li>• Business Solutions</li>
-                        </ul>
+                    <div class="progress">
+                        <div class="progress-filled" data-width="95"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-title">
+                        <span>Student Satisfaction</span>
+                        <span>92%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-filled" data-width="92"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-bar">
+                    <div class="progress-title">
+                        <span>Admission Success</span>
+                        <span>97%</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-filled" data-width="97"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 bg-black">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16">My <span class="text-purple-400">Skills</span></h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Language Skills -->
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('languages')">
-                    <i class="fas fa-language text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">Languages</h3>
-                    <p class="text-sm text-gray-400">English, Nepali, Hindi</p>
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>Comprehensive educational consultancy services</p>
+            </div>
+            
+            <div class="service-cards">
+                <div class="service-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Language Training</h3>
+                    <p>We offer comprehensive language training programs for IELTS, TOEFL, Japanese (JLPT), Korean (TOPIK), and other language proficiency tests required for studying abroad.</p>
                 </div>
                 
-                <!-- Programming Languages -->
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('python')">
-                    <i class="fab fa-python text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">Python</h3>
-                    <p class="text-sm text-gray-400">Advanced</p>
+                <div class="service-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>IT Courses</h3>
+                    <p>Enhance your technical skills with our IT courses including programming, web development, data science, and other in-demand tech skills to boost your career prospects.</p>
                 </div>
                 
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('javascript')">
-                    <i class="fab fa-js-square text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">JavaScript</h3>
-                    <p class="text-sm text-gray-400">Expert</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('react')">
-                    <i class="fab fa-react text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">React</h3>
-                    <p class="text-sm text-gray-400">Advanced</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('nodejs')">
-                    <i class="fab fa-node-js text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">Node.js</h3>
-                    <p class="text-sm text-gray-400">Advanced</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('cpp')">
-                    <i class="fas fa-code text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">C/C++</h3>
-                    <p class="text-sm text-gray-400">Intermediate</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('dsa')">
-                    <i class="fas fa-project-diagram text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">DSA</h3>
-                    <p class="text-sm text-gray-400">Intermediate</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('flask')">
-                    <i class="fas fa-flask text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">Flask</h3>
-                    <p class="text-sm text-gray-400">Advanced</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('django')">
-                    <i class="fab fa-python text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">Django</h3>
-                    <p class="text-sm text-gray-400">Advanced</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('fastapi')">
-                    <i class="fas fa-rocket text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">FastAPI</h3>
-                    <p class="text-sm text-gray-400">Intermediate</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('wordpress')">
-                    <i class="fab fa-wordpress text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">WordPress</h3>
-                    <p class="text-sm text-gray-400">Advanced</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('github')">
-                    <i class="fab fa-github text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">GitHub</h3>
-                    <p class="text-sm text-gray-400">Expert</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('design')">
-                    <i class="fas fa-paint-brush text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">Graphic Design</h3>
-                    <p class="text-sm text-gray-400">Photoshop/Canva</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('uiux')">
-                    <i class="fas fa-desktop text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">UI/UX Design</h3>
-                    <p class="text-sm text-gray-400">Web Designer</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('hardware')">
-                    <i class="fas fa-microchip text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">Hardware</h3>
-                    <p class="text-sm text-gray-400">Computer & Networking</p>
-                </div>
-                
-                <div class="skill-item bg-gray-900 p-6 rounded-lg border border-purple-500/30 text-center cursor-pointer" onclick="openSkillLink('tally')">
-                    <i class="fas fa-calculator text-3xl text-purple-400 mb-4"></i>
-                    <h3 class="font-semibold mb-2">Tally</h3>
-                    <p class="text-sm text-gray-400">Accounting Software</p>
+                <div class="service-card">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Study Abroad Guidance</h3>
+                    <p>From selecting the right course and university to application processing, visa guidance, and pre-departure briefing, we provide end-to-end support for studying abroad.</p>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6">
-            <div class="flex justify-between items-center mb-16">
-                <h2 class="text-4xl font-bold">My <span class="text-purple-400">Projects</span></h2>
-                <button onclick="showAdminLogin()" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg text-sm">
-                    <i class="fas fa-cog mr-2"></i>Admin
-                </button>
-            </div>
-            
-            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Projects will be loaded here -->
-            </div>
-            
-            <!-- Admin Panel -->
-            <div id="admin-panel" class="hidden mt-12 bg-black/50 p-6 rounded-lg border border-purple-500/30">
-                <h3 class="text-xl font-semibold mb-4">Admin Panel</h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <h4 class="font-semibold mb-2">Add New Project</h4>
-                        <input type="text" id="new-project-name" placeholder="Project Name" class="w-full p-2 mb-2 bg-gray-800 rounded border border-purple-500/30 text-white">
-                        <textarea id="new-project-desc" placeholder="Project Description" class="w-full p-2 mb-2 bg-gray-800 rounded border border-purple-500/30 text-white h-20"></textarea>
-                        
-                        <!-- Image Upload Section -->
-                        <div class="mb-2">
-                            <label class="block text-sm font-semibold mb-2">Project Image</label>
-                            <div id="image-preview" class="image-preview">
-                                <span class="text-gray-400">Image preview</span>
-                            </div>
-                            <input type="file" id="image-upload" accept="image/*" capture="camera">
-                            <label for="image-upload" class="upload-btn">
-                                <i class="fas fa-upload mr-2"></i>Upload Image
-                            </label>
-                        </div>
-                        
-                        <button onclick="addProject()" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded">Add Project</button>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold mb-2">Manage Projects</h4>
-                        <div id="admin-projects-list" class="space-y-2">
-                            <!-- Admin project list will be here -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Edit Project Modal (hidden by default) -->
-    <div id="edit-modal" class="edit-modal hidden">
-        <div class="edit-modal-content">
-            <h3 class="text-xl font-semibold mb-4">Edit Project</h3>
-            <input type="hidden" id="edit-project-id">
-            
-            <input type="text" id="edit-project-name" placeholder="Project Name" class="w-full p-2 mb-2 bg-gray-800 rounded border border-purple-500/30 text-white">
-            <textarea id="edit-project-desc" placeholder="Project Description" class="w-full p-2 mb-2 bg-gray-800 rounded border border-purple-500/30 text-white h-20"></textarea>
-            
-            <!-- Image Upload Section for Editing -->
-            <div class="mb-4">
-                <label class="block text-sm font-semibold mb-2">Project Image</label>
-                <div id="edit-image-preview" class="image-preview">
-                    <span class="text-gray-400">Image preview</span>
-                </div>
-                <input type="file" id="edit-image-upload" accept="image/*" capture="camera">
-                <label for="edit-image-upload" class="upload-btn">
-                    <i class="fas fa-upload mr-2"></i>Change Image
-                </label>
-            </div>
-            
-            <div class="flex space-x-2">
-                <button onclick="updateProject()" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded flex-1">Update Project</button>
-                <button onclick="closeEditModal()" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded flex-1">Cancel</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Reviews Section -->
-    <section id="reviews" class="py-20 bg-black">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16">Client <span class="text-purple-400">Reviews</span></h2>
-            
-            <!-- Reviews -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                <div class="bg-gray-900 p-6 rounded-lg border border-purple-500/30">
-                    <div class="flex items-center mb-4">
-                        <img src="client1.jpg" alt="Client 1" class="w-12 h-12 rounded-full mr-4 bg-purple-600 flex items-center justify-center text-white font-bold" onerror="this.innerHTML='C1'; this.src='';">
-                        <div>
-                            <h4 class="font-semibold">John Smith</h4>
-                            <div class="text-yellow-400">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"Sujan delivered an exceptional website for our business. His attention to detail and technical expertise is outstanding!"</p>
-                </div>
-                
-                <div class="bg-gray-900 p-6 rounded-lg border border-purple-500/30">
-                    <div class="flex items-center mb-4">
-                        <img src="client2.jpg" alt="Client 2" class="w-12 h-12 rounded-full mr-4 bg-purple-600 flex items-center justify-center text-white font-bold" onerror="this.innerHTML='M2'; this.src='';">
-                        <div>
-                            <h4 class="font-semibold">Maria Garcia</h4>
-                            <div class="text-yellow-400">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"Professional, reliable, and creative. Sujan transformed our ideas into a beautiful, functional website."</p>
-                </div>
-                
-                <div class="bg-gray-900 p-6 rounded-lg border border-purple-500/30">
-                    <div class="flex items-center mb-4">
-                        <img src="client3.jpg" alt="Client 3" class="w-12 h-12 rounded-full mr-4 bg-purple-600 flex items-center justify-center text-white font-bold" onerror="this.innerHTML='R3'; this.src='';">
-                        <div>
-                            <h4 class="font-semibold">Robert Johnson</h4>
-                            <div class="text-yellow-400">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"Excellent communication and fast delivery. The e-commerce site Sujan built has increased our sales significantly."</p>
-                </div>
-                
-                <div class="bg-gray-900 p-6 rounded-lg border border-purple-500/30">
-                    <div class="flex items-center mb-4">
-                        <img src="client4.jpg" alt="Client 4" class="w-12 h-12 rounded-full mr-4 bg-purple-600 flex items-center justify-center text-white font-bold" onerror="this.innerHTML='S4'; this.src='';">
-                        <div>
-                            <h4 class="font-semibold">Sarah Wilson</h4>
-                            <div class="text-yellow-400">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"Amazing work on our portfolio website. Sujan's design skills and technical knowledge are top-notch."</p>
-                </div>
-                
-                <div class="bg-gray-900 p-6 rounded-lg border border-purple-500/30">
-                    <div class="flex items-center mb-4">
-                        <img src="client5.jpg" alt="Client 5" class="w-12 h-12 rounded-full mr-4 bg-purple-600 flex items-center justify-center text-white font-bold" onerror="this.innerHTML='D5'; this.src='';">
-                        <div>
-                            <h4 class="font-semibold">David Brown</h4>
-                            <div class="text-yellow-400">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"Sujan is a true professional. He delivered our project on time and exceeded our expectations in every way."</p>
-                </div>
+    <section id="reviews" class="section reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Student Reviews</h2>
+                <p>What our students say about us</p>
             </div>
             
-            <!-- FAQ Section -->
-            <div class="max-w-4xl mx-auto">
-                <h3 class="text-2xl font-bold text-center mb-8">Frequently Asked <span class="text-purple-400">Questions</span></h3>
-                <div class="space-y-4">
-                    <div class="bg-gray-900 rounded-lg border border-purple-500/30">
-                        <button class="w-full p-4 text-left font-semibold flex justify-between items-center" onclick="toggleFAQ(1)">
-                            What services do you offer?
-                            <i class="fas fa-chevron-down" id="faq-icon-1"></i>
-                        </button>
-                        <div id="faq-content-1" class="hidden p-4 pt-0 text-gray-300">
-                            I offer full-stack web development, UI/UX design, graphic design, and computer hardware services. This includes custom websites, e-commerce platforms, and business solutions.
+            <div class="review-cards">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-img">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Student">
+                        </div>
+                        <div class="review-info">
+                            <h3>Rajesh Kumar</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="bg-gray-900 rounded-lg border border-purple-500/30">
-                        <button class="w-full p-4 text-left font-semibold flex justify-between items-center" onclick="toggleFAQ(2)">
-                            How long does a typical project take?
-                            <i class="fas fa-chevron-down" id="faq-icon-2"></i>
-                        </button>
-                        <div id="faq-content-2" class="hidden p-4 pt-0 text-gray-300">
-                            Project timelines vary based on complexity. A simple website takes 1-2 weeks, while complex e-commerce or custom applications may take 4-8 weeks.
+                    <p>"Sunrise Education helped me get into my dream university in the USA. Their guidance throughout the application process was invaluable. I couldn't have done it without them!"</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-img">
+                            <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=699&q=80" alt="Student">
+                        </div>
+                        <div class="review-info">
+                            <h3>Priya Sharma</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="bg-gray-900 rounded-lg border border-purple-500/30">
-                        <button class="w-full p-4 text-left font-semibold flex justify-between items-center" onclick="toggleFAQ(3)">
-                            Do you provide ongoing support?
-                            <i class="fas fa-chevron-down" id="faq-icon-3"></i>
-                        </button>
-                        <div id="faq-content-3" class="hidden p-4 pt-0 text-gray-300">
-                            Yes, I provide ongoing maintenance and support for all projects. This includes updates, bug fixes, and technical assistance as needed.
+                    <p>"The IELTS training at Sunrise Education was exceptional. The instructors were knowledgeable and supportive. I achieved band 8.0 thanks to their expert guidance!"</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-img">
+                            <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db1604?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Student">
+                        </div>
+                        <div class="review-info">
+                            <h3>Sita Gurung</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="bg-gray-900 rounded-lg border border-purple-500/30">
-                        <button class="w-full p-4 text-left font-semibold flex justify-between items-center" onclick="toggleFAQ(4)">
-                            What are your payment terms?
-                            <i class="fas fa-chevron-down" id="faq-icon-4"></i>
-                        </button>
-                        <div id="faq-content-4" class="hidden p-4 pt-0 text-gray-300">
-                            I typically work with a 50% upfront payment and 50% upon completion. For larger projects, we can discuss milestone-based payments.
+                    <p>"I'm now studying in Japan thanks to Sunrise Education. They helped me with everything from university selection to visa processing. The Japanese language classes were particularly helpful."</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-img">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Student">
                         </div>
+                        <div class="review-info">
+                            <h3>Anil Thapa</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p>"The IT courses at Sunrise Education are practical and industry-relevant. I gained valuable skills that helped me secure a job even before completing my course. Highly recommended!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our services</p>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>What are the entry requirements for studying abroad?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Entry requirements vary by country and institution but generally include academic qualifications, language proficiency test scores (like IELTS, TOEFL), statement of purpose, letters of recommendation, and proof of financial support. Our counselors will guide you through the specific requirements for your chosen destination and program.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>How long does the visa process take?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Visa processing times vary by country. Typically, it takes 2-6 weeks for most countries after submitting your complete application. Some countries might have longer processing times during peak seasons. We recommend starting the process at least 3-4 months before your intended start date to account for any delays.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>What languages do you offer training for?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>We offer language training for English (IELTS, TOEFL preparation), Japanese (JLPT preparation), Korean (TOPIK preparation), and German. Our courses are designed to help you achieve the proficiency level required for academic and immigration purposes.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Do you provide scholarships guidance?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, we provide comprehensive guidance on scholarships, grants, and financial aid options available for international students. We help you identify suitable scholarships, prepare application materials, and meet deadlines to maximize your chances of receiving financial assistance.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>How much does your consultancy service cost?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Our service fees vary depending on the destination country and the services required. We offer transparent pricing with no hidden costs. Please contact us for a detailed consultation where we can provide specific information based on your needs.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <span>Can I work while studying abroad?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Most countries allow international students to work part-time during their studies, typically 20 hours per week during semesters and full-time during breaks. However, regulations vary by country, and some programs may have restrictions. We provide detailed information about work rights for your chosen destination.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Board Members Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Team</h2>
+                <p>Meet our dedicated board members</p>
+            </div>
+            
+            <div class="board-members">
+                <div class="member">
+                    <div class="member-img">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Founder">
+                    </div>
+                    <h3>Ramesh Adhikari</h3>
+                    <div class="member-role">Founder & Director</div>
+                    <p>With over 15 years of experience in international education, Ramesh has helped hundreds of students achieve their dreams of studying abroad.</p>
+                    <div class="member-contact">
+                        <a href="tel:+9779851234567"><i class="fas fa-phone"></i></a>
+                        <a href="mailto:ramesh@sunriseeducation.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <div class="member">
+                    <div class="member-img">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80" alt="Head Coordinator">
+                    </div>
+                    <h3>Sunita Thapa</h3>
+                    <div class="member-role">Head Coordinator</div>
+                    <p>Sunita specializes in visa processing and documentation with an impressive success rate. She ensures a smooth application process for all our students.</p>
+                    <div class="member-contact">
+                        <a href="tel:+9779851234568"><i class="fas fa-phone"></i></a>
+                        <a href="mailto:sunita@sunriseeducation.com"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
@@ -575,423 +1448,274 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-900">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-16">Get In <span class="text-purple-400">Touch</span></h2>
-            <div class="max-w-2xl mx-auto">
-                <form id="contact-form" class="space-y-6">
-                    <div>
-                        <label class="block text-sm font-semibold mb-2">Full Name *</label>
-                        <input type="text" id="fullname" required class="w-full p-3 bg-black border border-purple-500/30 rounded-lg text-white focus:border-purple-500 focus:outline-none">
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Get in touch with us for more information</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> Main Road, Damak-4, Jhapa, Nepal</p>
+                        <p><i class="fas fa-phone"></i> +977 985-1234567, +977 023-540000</p>
+                        <p><i class="fas fa-envelope"></i> info@sunriseeducation.com</p>
+                        <p><i class="fas fa-clock"></i> Sunday-Friday: 10AM - 5PM</p>
                     </div>
-                    <div>
-                        <label class="block text-sm font-semibold mb-2">Address *</label>
-                        <input type="text" id="address" required class="w-full p-3 bg-black border border-purple-500/30 rounded-lg text-white focus:border-purple-500 focus:outline-none">
+                    
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
-                    <div>
-                        <label class="block text-sm font-semibold mb-2">Phone Number *</label>
-                        <input type="tel" id="phone" required class="w-full p-3 bg-black border border-purple-500/30 rounded-lg text-white focus:border-purple-500 focus:outline-none">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold mb-2">Inquiry *</label>
-                        <textarea id="inquiry" required rows="5" class="w-full p-3 bg-black border border-purple-500/30 rounded-lg text-white focus:border-purple-500 focus:outline-none"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 py-3 rounded-lg font-semibold transition-all duration-300">
-                        Send Message
-                    </button>
-                </form>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send Inquiry</h3>
+                    <form id="inquiryForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message via WhatsApp</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black py-12 border-t border-purple-500/30">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col items-center">
-                <div class="flex space-x-6 mb-8">
-                    <a href="https://www.facebook.com/subedi.sujan.2025" class="text-2xl hover:text-purple-400 transition-colors">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://www.instagram.com/kalki_sujan123/?igsh=c2w0Y3ZhaGRmdHk4#" class="text-2xl hover:text-purple-400 transition-colors">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/sujan-subedi-9b9260264/" class="text-2xl hover:text-purple-400 transition-colors">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@sujansubedi989" class="text-2xl hover:text-purple-400 transition-colors">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://wa.me/+9779804918250" class="text-2xl hover:text-purple-400 transition-colors">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="https://github.com/Suj10S/" class="text-2xl hover:text-purple-400 transition-colors">
-                        <i class="fas fa-github"></i>
-                    </a>
-                    <a href="tel:+9779804918250" class="text-2xl hover:text-purple-400 transition-colors">
-                        <i class="fas fa-phone"></i>
-                    </a>
-                    <a href="mailto:sujansubedi803@gmail.com" class="text-2xl hover:text-purple-400 transition-colors">
-                        <i class="fas fa-envelope"></i>
-                    </a>
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h4>Sunrise Education Foundation</h4>
+                    <p>Your trusted partner for global education since 2010. We provide comprehensive guidance for studying abroad, language training, and IT courses.</p>
                 </div>
-                <p class="text-gray-400 text-center">
-                    © 2022 All Rights Reserved. SUJAN SUBEDI <br>
-                    Power By SUJAN SUBEDI
-                </p>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#study-abroad">Study Abroad</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Study Abroad Guidance</a></li>
+                        <li><a href="#">Language Training</a></li>
+                        <li><a href="#">IT Courses</a></li>
+                        <li><a href="#">Visa Assistance</a></li>
+                        <li><a href="#">Scholarship Guidance</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Main Road, Damak-4, Jhapa, Nepal</li>
+                        <li><i class="fas fa-phone"></i> +977 985-1234567</li>
+                        <li><i class="fas fa-envelope"></i> info@sunriseeducation.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Sunrise Education Foundation. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating Buttons -->
-    <a href="https://wa.me/+9779804918250" class="floating-btn whatsapp-btn">
-        <i class="fab fa-whatsapp text-white text-xl"></i>
-    </a>
-    
-    <a href="tel:+9779804918250" class="floating-btn phone-btn">
-        <i class="fas fa-phone text-white text-xl"></i>
-    </a>
-
-    <!-- Admin Login Modal -->
-    <div id="admin-modal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-        <div class="bg-gray-900 p-8 rounded-lg border border-purple-500/30 max-w-md w-full mx-4">
-            <h3 class="text-xl font-semibold mb-4">Admin Login</h3>
-            <input type="password" id="admin-password" placeholder="Enter password" class="w-full p-3 mb-4 bg-black border border-purple-500/30 rounded text-white">
-            <div class="flex space-x-4">
-                <button onclick="adminLogin()" class="bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded flex-1">Login</button>
-                <button onclick="closeAdminModal()" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded flex-1">Cancel</button>
-            </div>
-        </div>
-    </div>
-
+    <!-- JavaScript -->
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
-
-        // Smooth scrolling
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({
-                behavior: 'smooth'
-            });
+        
+        document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+        
+        // Hero Slider
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
         }
-
-        // Navigation links smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        setInterval(nextSlide, 5000);
+        
+        // Scroll Animation
+        function checkScroll() {
+            const destinations = document.querySelectorAll('.destination');
+            const services = document.querySelectorAll('.service-card');
+            
+            destinations.forEach(destination => {
+                const destinationPosition = destination.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (destinationPosition < screenPosition) {
+                    destination.classList.add('visible');
                 }
             });
-        });
-
-        // Projects data
-        let projects = [
-            {
-                id: 1,
-                name: "Portfolio Website",
-                description: "A modern, responsive portfolio website showcasing skills and projects with beautiful animations.",
-                link: "#",
-                image: "portfolio.jpg"
-            },
-            {
-                id: 2,
-                name: "E-commerce Website",
-                description: "Full-featured online store with shopping cart, payment integration, and admin panel.",
-                link: "#",
-                image: "ecommerce.jpg"
-            },
-            {
-                id: 3,
-                name: "To-Do List App",
-                description: "Interactive task management application with drag-and-drop functionality and local storage.",
-                link: "#",
-                image: "todolist.jpg"
-            },
-            {
-                id: 4,
-                name: "Business Website",
-                description: "Professional business website with contact forms, service pages, and SEO optimization.",
-                link: "#",
-                image: "business.jpg"
-            }
-        ];
-
-        // Variables to store uploaded images
-        let uploadedImage = null;
-        let editUploadedImage = null;
-
-        // Image upload functionality
-        document.getElementById('image-upload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    uploadedImage = event.target.result;
-                    document.getElementById('image-preview').innerHTML = `<img src="${uploadedImage}" alt="Preview">`;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Edit image upload functionality
-        document.getElementById('edit-image-upload').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(event) {
-                    editUploadedImage = event.target.result;
-                    document.getElementById('edit-image-preview').innerHTML = `<img src="${editUploadedImage}" alt="Preview">`;
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Load projects
-        function loadProjects() {
-            const grid = document.getElementById('projects-grid');
-            grid.innerHTML = '';
             
-            projects.forEach(project => {
-                const projectCard = document.createElement('div');
-                projectCard.className = 'project-card bg-black/50 rounded-lg border border-purple-500/30 cursor-pointer overflow-hidden';
-                projectCard.onclick = () => window.open(project.link, '_blank');
-                projectCard.innerHTML = `
-                    <div class="h-48 bg-gradient-to-br from-purple-600 to-purple-800 relative overflow-hidden">
-                        ${project.imageData ? 
-                            `<img src="${project.imageData}" alt="${project.name}" class="w-full h-full object-cover">` : 
-                            `<img src="${project.image}" alt="${project.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                             <div class="absolute inset-0 bg-gradient-to-br from-purple-600 to-purple-800 flex items-center justify-center text-white text-4xl font-bold" style="display: none;">
-                                 <i class="fas fa-code"></i>
-                             </div>`
-                        }
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold mb-3">${project.name}</h3>
-                        <p class="text-gray-300 mb-4">${project.description}</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-purple-400 font-semibold">View Project →</span>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(projectCard);
+            services.forEach(service => {
+                const servicePosition = service.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (servicePosition < screenPosition) {
+                    service.classList.add('visible');
+                }
             });
         }
-
-        // Admin functionality
-        let isAdminLoggedIn = false;
-
-        function showAdminLogin() {
-            document.getElementById('admin-modal').classList.remove('hidden');
-        }
-
-        function closeAdminModal() {
-            document.getElementById('admin-modal').classList.add('hidden');
-            document.getElementById('admin-password').value = '';
-        }
-
-        function adminLogin() {
-            const password = document.getElementById('admin-password').value;
-            if (password === 'Sujan@123') {
-                isAdminLoggedIn = true;
-                closeAdminModal();
-                document.getElementById('admin-panel').classList.remove('hidden');
-                loadAdminProjects();
-                alert('Admin login successful!');
-            } else {
-                alert('Incorrect password!');
-            }
-        }
-
-        function loadAdminProjects() {
-            const list = document.getElementById('admin-projects-list');
-            list.innerHTML = '';
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+        
+        // Counter Animation
+        function startCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            const speed = 200;
             
-            projects.forEach(project => {
-                const item = document.createElement('div');
-                item.className = 'flex justify-between items-center bg-gray-800 p-2 rounded';
-                item.innerHTML = `
-                    <span>${project.name}</span>
-                    <div class="flex space-x-2">
-                        <button onclick="editProject(${project.id})" class="bg-blue-600 hover:bg-blue-700 px-2 py-1 rounded text-sm">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button onclick="deleteProject(${project.id})" class="bg-red-600 hover:bg-red-700 px-2 py-1 rounded text-sm">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                `;
-                list.appendChild(item);
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const increment = Math.ceil(target / speed);
+                
+                if (count < target) {
+                    counter.innerText = Math.min(count + increment, target);
+                    setTimeout(() => startCounters(), 1);
+                }
             });
         }
-
-        function addProject() {
-            if (!isAdminLoggedIn) return;
+        
+        // Progress Bar Animation
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-filled');
             
-            const name = document.getElementById('new-project-name').value;
-            const desc = document.getElementById('new-project-desc').value;
+            progressBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width + '%';
+            });
+        }
+        
+        // Check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+        
+        let countersStarted = false;
+        
+        function checkCounters() {
+            const statsSection = document.querySelector('.stats');
             
-            if (name && desc) {
-                const newProject = {
-                    id: Date.now(),
-                    name: name,
-                    description: desc,
-                    link: "#",
-                    imageData: uploadedImage || null
-                };
-                projects.push(newProject);
-                loadProjects();
-                loadAdminProjects();
+            if (isInViewport(statsSection) && !countersStarted) {
+                startCounters();
+                animateProgressBars();
+                countersStarted = true;
+            }
+        }
+        
+        window.addEventListener('scroll', checkCounters);
+        
+        // FAQ Accordion
+        const accordionItems = document.querySelectorAll('.accordion-item');
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            
+            header.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Text to Speech
+        const ttsBtn = document.getElementById('tts-btn');
+        
+        ttsBtn.addEventListener('click', () => {
+            const heroText = document.querySelector('.hero-content').textContent;
+            
+            if ('speechSynthesis' in window) {
+                const speech = new SpeechSynthesisUtterance();
+                speech.text = heroText;
+                speech.volume = 1;
+                speech.rate = 1;
+                speech.pitch = 1;
+                speech.lang = 'en-US';
                 
-                // Reset form
-                document.getElementById('new-project-name').value = '';
-                document.getElementById('new-project-desc').value = '';
-                document.getElementById('image-preview').innerHTML = '<span class="text-gray-400">Image preview</span>';
-                uploadedImage = null;
-                
-                alert('Project added successfully!');
+                window.speechSynthesis.speak(speech);
             } else {
-                alert('Please fill in all fields!');
+                alert('Your browser does not support text-to-speech functionality.');
             }
-        }
-
-        function editProject(id) {
-            if (!isAdminLoggedIn) return;
-            
-            const project = projects.find(p => p.id === id);
-            if (project) {
-                document.getElementById('edit-project-id').value = project.id;
-                document.getElementById('edit-project-name').value = project.name;
-                document.getElementById('edit-project-desc').value = project.description;
-                
-                // Show current image if available
-                if (project.imageData) {
-                    document.getElementById('edit-image-preview').innerHTML = `<img src="${project.imageData}" alt="Preview">`;
-                } else {
-                    document.getElementById('edit-image-preview').innerHTML = '<span class="text-gray-400">Image preview</span>';
-                }
-                
-                // Reset edit uploaded image
-                editUploadedImage = null;
-                
-                // Show modal
-                document.getElementById('edit-modal').classList.remove('hidden');
-            }
-        }
-
-        function updateProject() {
-            if (!isAdminLoggedIn) return;
-            
-            const id = parseInt(document.getElementById('edit-project-id').value);
-            const name = document.getElementById('edit-project-name').value;
-            const desc = document.getElementById('edit-project-desc').value;
-            
-            if (name && desc) {
-                const projectIndex = projects.findIndex(p => p.id === id);
-                if (projectIndex !== -1) {
-                    projects[projectIndex].name = name;
-                    projects[projectIndex].description = desc;
-                    
-                    // Update image if a new one was uploaded
-                    if (editUploadedImage) {
-                        projects[projectIndex].imageData = editUploadedImage;
-                    }
-                    
-                    loadProjects();
-                    loadAdminProjects();
-                    closeEditModal();
-                    alert('Project updated successfully!');
-                }
-            } else {
-                alert('Please fill in all fields!');
-            }
-        }
-
-        function closeEditModal() {
-            document.getElementById('edit-modal').classList.add('hidden');
-        }
-
-        function deleteProject(id) {
-            if (!isAdminLoggedIn) return;
-            
-            projects = projects.filter(project => project.id !== id);
-            loadProjects();
-            loadAdminProjects();
-            alert('Project deleted successfully!');
-        }
-
-        // Skill links
-        function openSkillLink(skill) {
-            const links = {
-                'languages': 'https://en.wikipedia.org/wiki/Multilingualism',
-                'python': 'https://python.org',
-                'javascript': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-                'react': 'https://reactjs.org',
-                'nodejs': 'https://nodejs.org',
-                'cpp': 'https://cplusplus.com',
-                'dsa': 'https://en.wikipedia.org/wiki/Data_structure',
-                'flask': 'https://flask.palletsprojects.com',
-                'django': 'https://djangoproject.com',
-                'fastapi': 'https://fastapi.tiangolo.com',
-                'wordpress': 'https://wordpress.org',
-                'github': 'https://github.com',
-                'design': 'https://adobe.com/products/photoshop.html',
-                'uiux': 'https://en.wikipedia.org/wiki/User_interface_design',
-                'hardware': 'https://en.wikipedia.org/wiki/Computer_hardware',
-                'tally': 'https://tallysolutions.com'
-            };
-            
-            if (links[skill]) {
-                window.open(links[skill], '_blank');
-            }
-        }
-
-        // FAQ functionality
-        function toggleFAQ(id) {
-            const content = document.getElementById(`faq-content-${id}`);
-            const icon = document.getElementById(`faq-icon-${id}`);
-            
-            content.classList.toggle('hidden');
-            icon.classList.toggle('fa-chevron-down');
-            icon.classList.toggle('fa-chevron-up');
-        }
-
-        // Contact form
-        document.getElementById('contact-form').addEventListener('submit', function(e) {
+        });
+        
+        // Form Submission to WhatsApp
+        const inquiryForm = document.getElementById('inquiryForm');
+        
+        inquiryForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            const fullname = document.getElementById('fullname').value;
-            const address = document.getElementById('address').value;
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
-            const inquiry = document.getElementById('inquiry').value;
+            const message = document.getElementById('message').value;
             
-            // This is a demo form - in a real application, you would send this data to a server
-            alert(`Thank you ${fullname}! Your message has been received. We'll get back to you soon.`);
+            const text = `Name: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AMessage: ${message}`;
             
-            // Reset form
-            this.reset();
+            window.open(`https://wa.me/9779851234567?text=${text}`, '_blank');
         });
-
-        // Initialize
-        loadProjects();
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('bg-black');
-                nav.classList.remove('bg-black/90');
-            } else {
-                nav.classList.add('bg-black/90');
-                nav.classList.remove('bg-black');
-            }
+        
+        // Initialize on load
+        window.addEventListener('load', () => {
+            checkScroll();
+            checkCounters();
         });
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'977da22ca78cd8b9',t:'MTc1NjY1NDkwMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
